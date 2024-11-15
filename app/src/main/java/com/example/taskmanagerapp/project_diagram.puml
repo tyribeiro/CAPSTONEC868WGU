@@ -1,0 +1,73 @@
+@startUML
+
+package dao {
+  interface CategoryDao
+  interface NoteDao
+  interface TaskDao
+}
+
+package database {
+  class TaskDatabase
+}
+
+package utils {
+  class DateConverter
+  class ReportGenerator
+}
+
+package entities {
+  class Category
+  abstract class Task
+  class PersonalTask extends Task
+  class WorkTask extends Task
+  class MeetingTask extends Task
+  class ReminderTask extends Task
+  class Note
+}
+
+package repositories {
+  class CategoryRepository
+  class NoteRepository
+  class TaskRepository
+}
+
+package ui {
+  class MainActivity
+  class EditNoteActivity
+  class EditTaskActivity
+  class NotesActivity
+  class ReportActivity
+  class ReportViewerActivity
+  class CategoryViewModel
+  class NoteViewModel
+  class TaskViewModel
+  class ReportAdapter
+  class CategoryReportAdapter
+  class NoteAdapter
+  class TaskAdapter
+  class TaskReportAdapter
+}
+
+entities.Task --> entities.Category
+entities.Note --> entities.Task
+
+repositories.CategoryRepository --> dao.CategoryDao
+repositories.NoteRepository --> dao.NoteDao
+repositories.TaskRepository --> dao.TaskDao
+
+ui.CategoryViewModel --> repositories.CategoryRepository
+ui.NoteViewModel --> repositories.NoteRepository
+ui.TaskViewModel --> repositories.TaskRepository
+
+ui.EditNoteActivity --> entities.Note
+ui.EditTaskActivity --> entities.Task
+ui.NotesActivity --> entities.Note
+ui.ReportActivity --> utils.ReportGenerator
+ui.ReportViewerActivity --> ui.ReportAdapter
+
+ui.TaskAdapter --> entities.Task
+ui.NoteAdapter --> entities.Note
+ui.CategoryReportAdapter --> entities.Category
+ui.TaskReportAdapter --> entities.Task
+
+@enduml

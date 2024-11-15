@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TaskManagerApp</string>
+    <string-array name="task_types">
+        <item>Work</item>
+        <item>Personal</item>
+    </string-array>
+</resources>
